@@ -96,10 +96,10 @@ const MemorialPage: React.FC = () => {
       </div>
 
       {/* Memorial Footer*/}
-      <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
 
         {/* Video Gallery Link */}
         {person.hasVideoGallery && (
+      <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
           <div className="text-center mb-8">
             <Link
               to={`/videos/${person.id === 'delbert-gennetten' ? 'delbert' : 'virginia'}`}
@@ -109,9 +109,14 @@ const MemorialPage: React.FC = () => {
               <span>View Video Memories (password required)</span>
             </Link>
           </div>
-        )}
       </div>
-
+        )}
+      <div className="text-center mt-16 pt-8 border-t border-stone-200">
+        <p className="text-stone-600 italic">
+          "Those we love don't go away, they walk beside us every day."
+        </p>
+      </div>
+ 
    </div>
   );
 };

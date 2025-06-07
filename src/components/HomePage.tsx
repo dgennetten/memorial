@@ -46,7 +46,7 @@ const HomePage: React.FC = () => {
           <img 
             src="https://raw.githubusercontent.com/dgennetten/mausoleum/b064b5b08a75af4775094a0019ca111ec1a6a87f/src/images/GennettenMemorial.png"
             alt="Gennetten Family Tree"
-            className="w-full max-w-4xl mx-auto rounded-lg shadow-md"
+            className="w-full max-w-4xl mx-auto "
           />
         </div>
       </div>
@@ -100,7 +100,7 @@ const HomePage: React.FC = () => {
           <img 
             src="https://raw.githubusercontent.com/dgennetten/mausoleum/b064b5b08a75af4775094a0019ca111ec1a6a87f/src/images/Timeline.png"
             alt="Family Timeline"
-            className="w-full max-w-6xl mx-auto rounded-lg shadow-md"
+            className="w-full max-w-6xl mx-auto"
           />
         </div>
       </div>

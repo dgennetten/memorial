@@ -64,18 +64,6 @@ const MemorialPage: React.FC = () => {
           </p>
         </div>
 
-        {/* Video Gallery Link */}
-        {person.hasVideoGallery && (
-          <div className="text-center mb-8">
-            <Link
-              to={`/videos/${person.id === 'delbert-gennetten' ? 'delbert' : 'virginia'}`}
-              className="inline-flex items-center space-x-2 bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-lg transition-colors"
-            >
-              <Video className="h-5 w-5" />
-              <span>View Video Memories</span>
-            </Link>
-          </div>
-        )}
       </div>
 
       {/* Obituary */}

@@ -137,10 +137,12 @@ const VideoGallery: React.FC = () => {
                   src={getEmbedUrl(video.url)}
                   className="w-full h-full"
                   frameBorder="0"
+                  allow="autoplay; fullscreen"
                   allowFullScreen
                   title={video.caption}
                 />
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 bg-black/20 transition-opacity">
+                {/* Overlay: Visible initially, hidden after interaction */}
+                <div className="absolute inset-0 flex items-center justify-center bg-black/20 transition-opacity pointer-events-auto">
                   <Play className="h-12 w-12 text-white" />
                 </div>
               </div>

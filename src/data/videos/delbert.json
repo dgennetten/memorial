@@ -1,11 +1,11 @@
 [
   {
-    "date": "1995-12-25",
+    "date": "",
     "caption": "#1 tbd",
     "url": "https://drive.google.com/file/d/"
   },
   {
-    "date": "2000-07-04",
+    "date": "",
     "caption": "#2 tbd",
     "url": "https://drive.google.com/file/d/"
   },
@@ -23,5 +23,45 @@
     "date": "2017-07-11",
     "caption": "Interview #5",
     "url": "https://drive.google.com/file/d/0B9c2vfpYAX4RMzA0LWJIZEREYjA"
+  },
+  {
+    "date": "2017-07-11",
+    "caption": "Interview #6",
+    "url": "https://drive.google.com/file/d/1XpP7PrXD63Te9rsF3jjJGlo13gVuMlXp"
+  },
+  {
+    "date": "2017-07-11",
+    "caption": "Interview #7",
+    "url": "https://drive.google.com/file/d/0B9c2vfpYAX4RTGVXakpMemJmOTA"
+  },
+  {
+    "date": "2017-07-11",
+    "caption": "Interview #8",
+    "url": "https://drive.google.com/file/d/0B9c2vfpYAX4RVE9ta0I1WjlPa00"
+  },
+  {
+    "date": "2017-07-11",
+    "caption": "Interview #9",
+    "url": "https://drive.google.com/file/d/0B9c2vfpYAX4RSFY3d19XX3VMcWs"
+  },
+  {
+    "date": "2017-07-11",
+    "caption": "Interview #10",
+    "url": "https://drive.google.com/file/d/0B9c2vfpYAX4Rc0FnOHhJMFBSYVE/preview"
+  },
+  {
+    "date": "2017-07-11",
+    "caption": "Interview #11",
+    "url": "https://drive.google.com/file/d/0B9c2vfpYAX4Rb1B4WkxlWHhjSDQ/preview"
+  },
+  {
+    "date": "2017-07-11",
+    "caption": "Interview #12",
+    "url": "https://drive.google.com/file/d/0B9c2vfpYAX4RWWt1WXVWMThuWlk/preview"
+  },
+  {
+    "date": "2017-07-11",
+    "caption": "Interview #13",
+    "url": "https://drive.google.com/file/d/0B9c2vfpYAX4RVUdaa1NNU2JuVjg/preview"
   }
 ]  

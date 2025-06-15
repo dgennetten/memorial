@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, Play, ExternalLink, Lock } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Lock } from 'lucide-react';
+import ReactPlayer from 'react-player';
 
 interface Video {
   date: string;
@@ -18,7 +19,6 @@ const VideoGallery: React.FC = () => {
   useEffect(() => {
     const loadVideos = async () => {
       if (!galleryId || !isAuthenticated) return;
-      
       try {
         const videoData = await import(`../data/videos/${galleryId}.json`);
         setVideos(videoData.default);
@@ -27,7 +27,6 @@ const VideoGallery: React.FC = () => {
         setVideos([]);
       }
     };
-
     loadVideos();
   }, [galleryId, isAuthenticated]);
 
@@ -41,14 +40,22 @@ const VideoGallery: React.FC = () => {
     }
   };
 
-  const getEmbedUrl = (driveUrl: string) => {
-    const fileId = driveUrl.split('/d/')[1]?.split('/')[0];
-    return `https://drive.google.com/file/d/${fileId}/preview`;
+  // Extracts the file ID from a Google Drive URL
+  const getFileId = (driveUrl: string) => {
+    const match = driveUrl.match(/\/d\/([a-zA-Z0-9_-]+)/);
+    return match ? match[1] : '';
   };
 
+  // Returns a direct downloadable link for react-player
+  const getDirectVideoUrl = (driveUrl: string) => {
+    const fileId = getFileId(driveUrl);
+    return fileId ? `https://drive.google.com/uc?id=${fileId}` : '';
+  };
+
+  // Returns the Google Drive preview link for "Open Full Screen"
   const getFullScreenUrl = (driveUrl: string) => {
-    const fileId = driveUrl.split('/d/')[1]?.split('/')[0];
-    return `https://drive.google.com/file/d/${fileId}/view`;
+    const fileId = getFileId(driveUrl);
+    return fileId ? `https://drive.google.com/file/d/${fileId}/view` : driveUrl;
   };
 
   const galleryTitle = galleryId === 'delbert' ? 'Delbert Donald Gennetten' : 'Dorothy Virginia Gennetten';
@@ -130,39 +137,46 @@ const VideoGallery: React.FC = () => {
       {/* Video Grid */}
       {videos.length > 0 ? (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {videos.map((video, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden">
-              <div className="relative aspect-video bg-stone-100">
-                <iframe
-                  src={getEmbedUrl(video.url)}
-                  className="w-full h-full"
-                  frameBorder="0"
-                  allow="autoplay; fullscreen"
-                  allowFullScreen
-                  title={video.caption}
-                />
-                {/* Overlay: Visible initially, hidden after interaction */}
-                <div className="absolute inset-0 flex items-center justify-center bg-black/20 transition-opacity pointer-events-auto">
-                  <Play className="h-12 w-12 text-white" />
+          {videos.map((video, index) => {
+            const directUrl = getDirectVideoUrl(video.url);
+            return (
+              <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div className="relative aspect-video bg-stone-100 flex items-center justify-center">
+                  <ReactPlayer
+                    url={directUrl}
+                    controls
+                    width="100%"
+                    height="100%"
+                    light // shows preview with play button
+                    playIcon={
+                      <div className="flex items-center justify-center w-full h-full">
+                        <div className="bg-black/40 rounded-full p-4">
+                          <svg width="48" height="48" fill="none" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="12" fill="black" fillOpacity="0.4"/>
+                            <polygon points="10,8 16,12 10,16" fill="white"/>
+                          </svg>
+                        </div>
+                      </div>
+                    }
+                    style={{ borderRadius: '0.75rem', overflow: 'hidden' }}
+                  />
+                </div>
+                <div className="p-4">
+                  <h3 className="font-semibold text-stone-800 mb-2">{video.caption}</h3>
+                  <p className="text-sm text-stone-600 mb-3">{video.date}</p>
+                  <a
+                    href={getFullScreenUrl(video.url)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center space-x-2 text-amber-600 hover:text-amber-700 text-sm transition-colors"
+                  >
+                    <ExternalLink className="h-4 w-4" />
+                    <span>Open Full Screen</span>
+                  </a>
                 </div>
               </div>
-              
-              <div className="p-4">
-                <h3 className="font-semibold text-stone-800 mb-2">{video.caption}</h3>
-                <p className="text-sm text-stone-600 mb-3">{video.date}</p>
-                
-                <a
-                  href={getFullScreenUrl(video.url)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center space-x-2 text-amber-600 hover:text-amber-700 text-sm transition-colors"
-                >
-                  <ExternalLink className="h-4 w-4" />
-                  <span>Open Full Screen</span>
-                </a>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       ) : (
         <div className="bg-white rounded-2xl shadow-lg p-8 text-center">

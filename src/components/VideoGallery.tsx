@@ -132,8 +132,12 @@ const VideoGallery: React.FC = () => {
         <p className="text-stone-600 text-center">
           Precious video memories to cherish and remember
         </p>
+        
       </div>
-
+<div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4" role="alert">
+  <p className="font-bold">Warning</p>
+  <p>Thumbnail player is not working. Use full screen link.</p>
+</div>
       {/* Video Grid */}
       {videos.length > 0 ? (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

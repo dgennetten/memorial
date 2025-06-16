@@ -32,7 +32,7 @@ const VideoGallery: React.FC = () => {
 
   const handlePasswordSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === 'FamilyVideos2025!') {
+    if (password === 'DelbertLovesVirginia') {
       setIsAuthenticated(true);
       setError('');
     } else {

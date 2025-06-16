@@ -134,7 +134,7 @@ const VideoGallery: React.FC = () => {
         </p>
         
       </div>
-<div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4" role="alert">
+<div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-4" role="alert">
   <p className="font-bold">Warning</p>
   <p>Thumbnail player is not working. Use full screen link.</p>
 </div>
